@@ -1,0 +1,25 @@
+{
+  "name": "bookit",
+  "version": "1.0.0",
+  "description": "A web app that authenticates users and grants them access to a portal to save details about hardcopies they own and currently have in their custody; books they own but don’t have in their custody (lent out), books they are currently reading and books they wish to keep in their to-read/to-buy list.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruqayaahh/BookIt.git"
+  },
+  "keywords": [
+    "hardcopy-books",
+    "book-kit",
+    "reading",
+    "catalogue"
+  ],
+  "author": "Ruqayaah Sabitu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ruqayaahh/BookIt/issues"
+  },
+  "homepage": "https://github.com/ruqayaahh/BookIt#readme"
+}
