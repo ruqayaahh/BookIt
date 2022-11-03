@@ -2,9 +2,12 @@
   "name": "bookit",
   "version": "1.0.0",
   "description": "A web app that authenticates users and grants them access to a portal to save details about hardcopies they own and currently have in their custody; books they own but don’t have in their custody (lent out), books they are currently reading and books they wish to keep in their to-read/to-buy list.",
-  "main": "index.js",
+  "main": "server/index.mjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cross-env NODE_ENV=production node server/index.mjs",
+    "build": "cross-env NODE_ENV=production webpack",
+    "dev": "concurrently \"cross-env NODE_ENV=development nodemon server/index.mjs\" \"cross-env NODE_ENV=development webpack serve --open\""
   },
   "repository": {
     "type": "git",
@@ -17,9 +20,47 @@
     "catalogue"
   ],
   "author": "Ruqayaah Sabitu",
+  "nodemonConfig": {
+    "ignore": [
+      "build",
+      "client"
+    ]
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ruqayaahh/BookIt/issues"
   },
-  "homepage": "https://github.com/ruqayaahh/BookIt#readme"
+  "homepage": "https://github.com/ruqayaahh/BookIt#readme",
+  "dependencies": {
+    "@chakra-ui/icons": "^2.0.11",
+    "@chakra-ui/react": "^2.3.7",
+    "axios": "^1.1.3",
+    "express": "^4.18.2",
+    "pg": "^8.8.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.3",
+    "ts-loader": "^9.4.1",
+    "webpack": "^5.74.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.19.6",
+    "@babel/preset-env": "^7.19.4",
+    "@babel/preset-typescript": "^7.18.6",
+    "@types/react": "^18.0.24",
+    "@types/react-dom": "^18.0.8",
+    "babel-loader": "^9.0.1",
+    "babel-preset-solid": "^1.6.1",
+    "concurrently": "^7.5.0",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.7.1",
+    "html-webpack-plugin": "^5.5.0",
+    "nodemon": "^2.0.20",
+    "sass": "^1.55.0",
+    "sass-loader": "^13.1.0",
+    "style-loader": "^3.3.1",
+    "typescript": "^4.8.4",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.11.1"
+  }
 }
