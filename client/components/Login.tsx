@@ -1,14 +1,19 @@
 import * as React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
+  Box,
   Button,
+  Flex,
+  Image,
   Input,
   InputGroup,
   InputLeftElement,
   Stack,
+  Text,
 } from "@chakra-ui/react";
-import { ViewIcon } from "@chakra-ui/icons";
+import { EmailIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { login } from "../apis/requests.js";
+// import logo from "./logo-color.svg";
 
 function Login() {
   const navigate = useNavigate();
@@ -17,6 +22,8 @@ function Login() {
     email: "",
     password: "",
   });
+
+  const disabled: boolean = !userData.email || !userData.password;
 
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -27,66 +34,72 @@ function Login() {
   ) => {
     event.preventDefault();
     try {
-      for (const key in userData) {
-        if (!userData[key as keyof typeof userData]) {
-          window.alert("All fields must be filled.");
-        } else {
-          const result = await login(userData);
-          console.log(result, "result");
-          navigate(`/dashboard/${result._id}`);
-        }
-      }
+      const result = await login(userData);
+      localStorage.setItem("fname", result.firstname);
+      localStorage.setItem("lname", result.lastname);
+      navigate(`/dashboard/${result._id}`);
     } catch (error) {
       console.log(error, "error in login");
     }
-
-    // {_id: 10, firstname: 'ree', lastname: 'gvcv', email: 'ssc', password: 'bvc'}
   };
   return (
-    <Stack spacing={4} align="center">
-      <InputGroup>
-        <InputLeftElement
-          pointerEvents="none"
-          children={<ViewIcon color="gray.300" />}
-        />
-        <Input
-          type="email"
-          placeholder="Email"
+    <Flex alignItems="center" justifyContent="center" height="90vh">
+      <Stack spacing={4} align="center" minWidth="30vw">
+        <Box boxSize="sm" mb="20px" width="100px" height="100px">
+          <Image src="./logo-color.svg" alt="bookit-logo" objectFit="cover" />
+        </Box>
+        <InputGroup>
+          <InputLeftElement
+            pointerEvents="none"
+            children={<EmailIcon color="gray.300" />}
+          />
+          <Input
+            borderColor="teal"
+            type="email"
+            placeholder="Email"
+            size="md"
+            variant="flushed"
+            name="email"
+            value={userData.email}
+            onChange={(e) => handleOnChange(e)}
+          />
+        </InputGroup>
+        <InputGroup>
+          <InputLeftElement
+            pointerEvents="none"
+            children={<ViewOffIcon color="gray.300" />}
+          />
+          <Input
+            borderColor="teal"
+            type="password"
+            placeholder="Password"
+            size="md"
+            variant="flushed"
+            name="password"
+            value={userData.password}
+            onChange={(e) => handleOnChange(e)}
+          />
+        </InputGroup>
+        <div>
+          New User?{" "}
+          <Link to="/signup">
+            <Text display="inline" color="teal">
+              Signup
+            </Text>
+          </Link>
+        </div>
+        <Button
+          colorScheme="teal"
+          isDisabled={disabled}
           size="md"
-          variant="flushed"
-          name="email"
-          value={userData.email}
-          onChange={(e) => handleOnChange(e)}
-        />
-      </InputGroup>
-      <InputGroup>
-        <InputLeftElement
-          pointerEvents="none"
-          children={<ViewIcon color="gray.300" />}
-        />
-        <Input
-          type="text"
-          placeholder="Password"
-          size="md"
-          variant="flushed"
-          name="password"
-          value={userData.password}
-          onChange={(e) => handleOnChange(e)}
-        />
-      </InputGroup>
-      <p>
-        New User? <Link to="/signup">Signup</Link>
-      </p>
-      <Button
-        colorScheme="teal"
-        size="md"
-        onClick={(e) => {
-          handleOnClick(e);
-        }}
-      >
-        Login
-      </Button>
-    </Stack>
+          onClick={(e) => {
+            handleOnClick(e);
+          }}
+        >
+          Login
+        </Button>
+      </Stack>
+    </Flex>
   );
 }
 

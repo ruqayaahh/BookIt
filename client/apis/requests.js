@@ -33,3 +33,28 @@ export const fetchLibrary = async (params) => {
   });
 };
 
+export const lendOutBook = async (params, payload) => {
+  const { user_id, book_id } = params;
+  return await api({
+    url: `/dashboard/${user_id}/library/${book_id}/lend`,
+    method: "patch",
+    data: { ...payload },
+  });
+};
+
+export const markBookAsRead = async (params, payload) => {
+  const { user_id, book_id } = params;
+  return await api({
+    url: `/dashboard/${user_id}/library/${book_id}/read`,
+    method: "patch",
+    data: { ...payload },
+  });
+};
+
+export const deleteBook = async (params) => {
+  const { user_id, book_id } = params;
+  return await api({
+    url: `/dashboard/${user_id}/library/${book_id}`,
+    method: "delete",
+  });
+};

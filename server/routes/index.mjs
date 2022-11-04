@@ -3,6 +3,7 @@ import {
   deleteUserBook,
   fetchUserLibrary,
   lendUserBook,
+  markBookAsRead,
   saveNewBook,
 } from "../controllers/index.mjs";
 const router = express.Router();
@@ -19,17 +20,17 @@ router.get("/:user_id/library", fetchUserLibrary, (req, res) => {
 
 // delete a selected book
 router.delete("/:user_id/library/:book_id", deleteUserBook, (req, res) =>
-  res.status(200).json({ library: res.locals.deletedBook })
+  res.status(200).json(res.locals.deletedBook)
 );
 
 //lend out selected book: in_custody/not
-router.patch("/:user_id/library/:book_id", lendUserBook, (req, res) =>
-  res.status(200).json({ library: res.locals.lentBook })
+router.patch("/:user_id/library/:book_id/lend", lendUserBook, (req, res) =>
+  res.status(200).json(res.locals.lentBook)
 );
 
-//lend out selected book: in_custody/not
-router.patch("/:user_id/library/:book_id", lendUserBook, (req, res) =>
-  res.status(200).json({ library: res.locals.lentBook })
+//mark selected book as read
+router.patch("/:user_id/library/:book_id/read", markBookAsRead, (req, res) =>
+  res.status(200).json({ library: res.locals.readBook })
 );
 
 export default router;

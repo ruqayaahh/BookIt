@@ -12,6 +12,7 @@ const createUser = async (userInfoArr) => {
     console.log(error, "error in createUser queries");
   }
 };
+
 const login = async (userInfoArr) => {
   try {
     // if all keys are defined, save into db and save returned row into res.locals.user
@@ -55,11 +56,13 @@ const fetchLibrary = async (userIdArr) => {
 const deleteBook = async (bookInfoArr) => {
   try {
     // delete book of user
+    //bookInfoArr = [book_id, user_id]
+    //e.g DELETE FROM books WHERE _id = 23 AND user_id = 11 RETURNING *
     const deletedBook = await db.query(
-      "DELETE FROM books WHERE books._id = $1 AND books.user_id = $2 RETURNING *",
+      "DELETE FROM books WHERE _id = $1 AND user_id = $2 RETURNING *",
       bookInfoArr
     );
-    return deletedBook;
+    return deletedBook.rows;
   } catch (error) {
     console.log(error, "error in deleteBook queries");
   }
@@ -67,15 +70,36 @@ const deleteBook = async (bookInfoArr) => {
 
 const lendBookOut = async (bookInfoArr) => {
   try {
-    // delete book of user
-    const deletedBook = await db.query(
-      "UPDATE books SET in_custody = $3 WHERE books._id = $1 AND books.user_id = $2 RETURNING *",
+    // bookInfoArr = [book_id, user_id, in_custody, lent_to, returning]
+    const lentBook = await db.query(
+      "UPDATE books SET in_custody = $3, lent_to = $4, date_of_return = $5 WHERE _id = $1 AND user_id = $2 RETURNING *",
       bookInfoArr
     );
-    return deletedBook;
+    return lentBook.rows;
   } catch (error) {
-    console.log(error, "error in deleteBook queries");
+    console.log(error, "error in lendBookOut queries");
   }
 };
 
-export { createUser, deleteBook, fetchLibrary, lendBookOut, login, saveBook };
+const markAsRead = async (bookInfoArr) => {
+  try {
+    // bookInfoArr = [book_id, user_id, review, is_read]
+    const lentBook = await db.query(
+      "UPDATE books SET is_read = $4, review = $3 WHERE _id = $1 AND user_id = $2 RETURNING *",
+      bookInfoArr
+    );
+    return lentBook.rows;
+  } catch (error) {
+    console.log(error, "error in markAsRead queries");
+  }
+};
+
+export {
+  createUser,
+  deleteBook,
+  fetchLibrary,
+  lendBookOut,
+  login,
+  markAsRead,
+  saveBook,
+};

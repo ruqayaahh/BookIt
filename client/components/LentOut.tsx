@@ -1,4 +1,15 @@
 import * as React from "react";
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+  TableContainer,
+} from "@chakra-ui/react";
 
 type Props = {};
 
@@ -19,11 +30,31 @@ export default function LentOut({}: Props) {
   ];
   return (
     <div>
-      <ul>
-        {library?.map((book, index: number) => (
-          <li key={index}>{book.name}</li>
-        ))}
-      </ul>
+      <TableContainer>
+        <Table variant="simple">
+          <Thead>
+            <Tr>
+              <Th>Lent to</Th>
+              <Th>Return Date</Th>
+              <Th>In Custody</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            <Tr>
+              <Td>Muna</Td>
+              <Td>2022-11-03 20:44:00+00</Td>
+              <Td>No</Td>
+            </Tr>
+          </Tbody>
+          <Tfoot>
+            <Tr>
+              <Th>Lent to</Th>
+              <Th>Return Date</Th>
+              <Th>In Custody</Th>
+            </Tr>
+          </Tfoot>
+        </Table>
+      </TableContainer>
     </div>
   );
 }
