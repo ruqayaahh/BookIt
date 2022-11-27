@@ -2,7 +2,7 @@
 A web app that authenticates users and grants them access to a portal to save details about hardcopies they own and currently have in their custody; books they own but don’t have in their custody (lent out), books they are currently reading and books they wish to keep in their to-read/to-buy list.
 
 To test and check the progress of **BookIt**, run the following commands in your IDE:
-- git clone the repo
+- git clone https://github.com/ruqayaahh/BookIt.git
 - npm i
 - npm run dev
 
@@ -11,7 +11,7 @@ email: feed
 password: rws
 
 
-Currently, these are what you can do:
+**Below are the current functionalities of _BookIt_:**
 1. Create your user/login (without auth/validation).
 2. Add books to your library.
 3. See the list of books currently in your library.
@@ -21,12 +21,14 @@ Currently, these are what you can do:
 7. Delete books from library.
 
 
-To Do:
+**To Do (Feel free to contribute):**
 1. a.Signup/Login auth and validation. b.Google OAuth login.
 2. Mark a book as returned and reverting a book's read status.
 3. Add to-read and to-buy books.
 3. Display lent, read, to-read and to-buy books.
-4. Testing
+4. Testing.
 
-Stretch:
-Make mobile app
+**Stretch:**
+Make mobile app.
+
+
