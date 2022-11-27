@@ -12,7 +12,7 @@ Go ahead to create your user or use the following credentials to login
 
 
 
-### **Below are the current functionalities of _BookIt_:** ###
+### **Below are all you can do on _BookIt_ currently:** ###
 - Create your user/login (without auth/validation).
 - Add books to your library.
 - See the list of books currently in your library.
