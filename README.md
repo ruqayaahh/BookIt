@@ -1,5 +1,5 @@
 # BookIt
-A web app that authenticates users and grants them access to a portal to save details about hardcopies they own and currently have in their custody; books they own but don’t have in their custody (lent out), books they are currently reading and books they wish to keep in their to-read/to-buy list.
+A web app that authenticates users and grants them access to a portal to save details about hardcopies they own and currently have in their custody, books they own but don’t have in their custody (lent out), books they are currently reading and books they wish to keep in their to-read/to-buy list.
 
 To test and check the progress of **BookIt**, run the following commands in your IDE:
 - git clone https://github.com/ruqayaahh/BookIt.git
