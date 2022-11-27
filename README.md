@@ -12,7 +12,7 @@ Go ahead to create your user or use the following credentials to login
 
 
 
-###**Below are the current functionalities of _BookIt_:**###
+### **Below are the current functionalities of _BookIt_:** ###
 - Create your user/login (without auth/validation).
 - Add books to your library.
 - See the list of books currently in your library.
@@ -22,14 +22,14 @@ Go ahead to create your user or use the following credentials to login
 - Delete books from library.
 
 
-###**To Do (Feel free to contribute):**###
+### **To Do (Feel free to contribute):** ###
 - a.Signup/Login auth and validation. b.Google OAuth login.
 - Mark a book as returned and reverting a book's read status.
 - Add to-read and to-buy books.
 - Display lent, read, to-read and to-buy books.
 - Testing.
 
-###**Stretch:**###
+### **Stretch:** ###
 - Make mobile app.
 
 
