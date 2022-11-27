@@ -7,28 +7,29 @@ To test and check the progress of **BookIt**, run the following commands in your
 - npm run dev
 
 Go ahead to create your user or use the following credentials to login
-email: feed
-password: rws
+- email: feed
+- password: rws
+
 
 
 **Below are the current functionalities of _BookIt_:**
-1. Create your user/login (without auth/validation).
-2. Add books to your library.
-3. See the list of books currently in your library.
-4. View the 'lent' and 'read' statuses of your books.
-5. Lend out a book, specifying the date of return.
-6. Mark a book as read and give a review on it.
-7. Delete books from library.
+- Create your user/login (without auth/validation).
+- Add books to your library.
+- See the list of books currently in your library.
+- View the 'lent' and 'read' statuses of your books.
+- Lend out a book, specifying the date of return.
+- Mark a book as read and give a review on it.
+- Delete books from library.
 
 
 **To Do (Feel free to contribute):**
-1. a.Signup/Login auth and validation. b.Google OAuth login.
-2. Mark a book as returned and reverting a book's read status.
-3. Add to-read and to-buy books.
-3. Display lent, read, to-read and to-buy books.
-4. Testing.
+- a.Signup/Login auth and validation. b.Google OAuth login.
+- Mark a book as returned and reverting a book's read status.
+- Add to-read and to-buy books.
+- Display lent, read, to-read and to-buy books.
+- Testing.
 
 **Stretch:**
-Make mobile app.
+- Make mobile app.
 
 
